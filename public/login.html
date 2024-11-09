@@ -4,29 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>GamerCave | Login</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="../public/assets/favicon.png" type="image/png">
 </head>
 
 <body>
     <main class="sign_main">
-        <img src="https://wallpaper.forfun.com/fetch/ae/aeee9fd906f595e03eb365ede9f1a649.jpeg">
+        <img src="./assets/pixel2.jpeg">
         <div id="signin_section">
 
             <span class="tittle">Login</span>
 
-            <span>BEM VINDO(A) DE VOLTA!</span>
+            <span id="welcome">BEM VINDO(A) <span> DE VOLTA!</span></span>
 
-            <span>E-mail:</span>
-            <input type="text" id="iptEmail">
+            <label>
+                <span class="subtittle">E-mail:</span>
+                <input type="text" id="iptEmail" class="iptSign">
+            </label>
 
-            <span>Senha:</span>
-            <input type="password" id="iptPassword">
-
+            <label>
+                <span class="subtittle">Senha:</span>
+                <input type="password" id="iptPassword" class="iptSign">    
+            </label>
+            
+            <div class="sign">
             <button>LOGIN</button>
             <span>NÃO TEM UMA CONTA? FAZER<a href="../public/cadastro.html">CADASTRO</a></span>
-
+            </div>
 
         </div>
     </main>

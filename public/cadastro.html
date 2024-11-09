@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>GamerCave | Cadastro</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="../public/assets/favicon.png" type="image/png">
 </head>
@@ -12,36 +12,47 @@
 <body>
     <div id="signup_section">
         <span class="tittle">Cadastro</span>
-
-        <span>Nome Completo:</span>
-        <input type="text" id="iptName">
-
-        <span>E-mail:</span>
-        <input type="text" id="iptEmail">
+        <label>
+            <span class="subtittle">Nome Completo:</span>
+            <input type="text" id="iptName">            
+        </label>
+        <label>
+            <span class="subtittle">E-mail:</span>
+            <input type="text" id="iptEmail">
+        </label>
 
         <div class="mini_section">
-            <span>Data de nascimento:</span>
-            <input type="date" id="iptDtNasc">
-            <span>Username:</span>
-            <input type="text" id="iptUserName">
+            <label>
+                <span class="subtittle">Data de nascimento:</span>
+                <input type="date" id="iptDtNasc">
+            </label>
+            <label>
+                <span class="subtittle">Username:</span>
+                <input type="text" id="iptUserName">
+            </label>
         </div>
 
         <div class="mini_section">
-            <span>Senha:</span>
-            <input type="password" id="iptPssw">
-            <span>Confirmar senha:</span>
-            <input type="password" id="iptConfirmPssw">
+            <label>
+                <span class="subtittle">Senha:</span>
+                <input type="password" id="iptPssw">
+            </label>
+            <label>
+                <span class="subtittle">Confirmar senha:</span>
+                <input type="password" id="iptConfirmPssw">
+            </label>
         </div>
-
-        <button>CADASTRAR-SE</button>
-        <span>FAZER <a href="../public/login.html">LOGIN</a></span>
-
+        <div class="sign">
+            <button>CADASTRAR-SE</button>
+            <span>FAZER <a href="../public/login.html">LOGIN</a></span>
+        </div>   
     </div>
 
-    <div id="form_section">
+    <div id="form_section"> <!-- vai ser escondida inicialmente -->
         <span class="tittle">Cadastro</span>
 
-        <span>Selecione seu gênero de jogos favorito:</span>
+        <label>
+        <span class="subtittle">Selecione seu gênero de jogos favorito:</span>
 
         <select id="">
             <option value="">Ação</option>
@@ -56,21 +67,27 @@
             <option value="">Plataforma</option>
             <option value="">Horror</option>
         </select>
-
-        <span>Qual dispostivo você costuma usar para jogar?</span <select id="">
+        </label>
         
-
-        <select>
-        <option value="">Console</option>
-        <option value="">Computador</option>
-        <option value="">Dispostivos Móveis</option>
-        <option value="">Gameboards</option>
+        <label>
+        <span class="subtittle">Qual dispostivo você costuma usar para jogar?</span> 
+        
+        <select id="">
+            <option value="">Console</option>
+            <option value="">Computador</option>
+            <option value="">Gameboards</option>
+            <option value="">Dispostivos Móveis</option>
         </select>
-
-        <span>Nos conte quantos jogos você já jogou:</span>
+        </label>
+        
+        <label>
+        <span class="subtittle">Nos conte quantos jogos você já jogou:</span>
         <input type="number">
-
-        <button>TUDO PRONTO!</button>
+        </label>
+        
+        <div class="sign">
+            <button>TUDO PRONTO!</button>
+        </div>
     </div>
 </body>
 
