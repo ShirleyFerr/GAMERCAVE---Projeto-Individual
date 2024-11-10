@@ -5,90 +5,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GamerCave | Cadastro</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style_sign.css">
     <link rel="icon" href="../public/assets/favicon.png" type="image/png">
 </head>
+<header>
+    <a href="./homepage.html"><img class="icon" src="./assets/gamercave_icon1.png"></a>
+    <a href="./homepage.html"><span class="tittle">GamerCave</span></a>
+</header>
 
-<body>
-    <div id="signup_section">
-        <span class="tittle">Cadastro</span>
-        <label>
-            <span class="subtittle">Nome Completo:</span>
-            <input type="text" id="iptName">            
-        </label>
-        <label>
-            <span class="subtittle">E-mail:</span>
-            <input type="text" id="iptEmail">
-        </label>
-
-        <div class="mini_section">
+<body class="bodySign">
+    <div id="body">
+        <img src="./assets/pixel1.jpg">
+        <div id="signup_section">
+            <span class="tittle">Cadastro</span>
             <label>
-                <span class="subtittle">Data de nascimento:</span>
-                <input type="date" id="iptDtNasc">
+                <span class="subtittle">Nome Completo:</span>
+                <input type="text" id="iptName" class="iptSign">
             </label>
             <label>
-                <span class="subtittle">Username:</span>
-                <input type="text" id="iptUserName">
+                <span class="subtittle">E-mail:</span>
+                <input type="text" id="iptEmail" class="iptSign">
             </label>
+
+            <div class="mini_section">
+                <label>
+                    <span class="subtittle">Data de nascimento:</span>
+                    <input type="date" id="iptDtNasc" class="iptSign">
+                </label>
+                <label>
+                    <span class="subtittle">Username:</span>
+                    <input type="text" id="iptUserName" class="iptSign">
+                </label>
+            </div>
+
+            <div class="mini_section">
+                <label>
+                    <span class="subtittle">Senha:</span>
+                    <input type="password" id="iptPssw" class="iptSign">
+                </label>
+                <label>
+                    <span class="subtittle">Confirmar senha:</span>
+                    <input type="password" id="iptConfirmPssw" class="iptSign">
+                </label>
+            </div>
+            <div class="sign">
+                <button onclick="formu()">CADASTRAR-SE</button>
+                <span>FAZER <a href="../public/login.html">LOGIN</a></span>
+            </div>
         </div>
 
-        <div class="mini_section">
+        <div id="form_section"> <!-- vai ser escondida inicialmente -->
+            <span class="tittle">Quase lá...</span>
+
             <label>
-                <span class="subtittle">Senha:</span>
-                <input type="password" id="iptPssw">
+                <span class="subtittle">Selecione seu gênero de jogos favorito:</span>
+
+                <select id="">
+                    <option value="">Ação</option>
+                    <option value="">Aventura</option>
+                    <option value="">RPG</option>
+                    <option value="">Battle Royale</option>
+                    <option value="">Simulação</option>
+                    <option value="">Indie</option>
+                    <option value="">MOBA</option>
+                    <option value="">Estratégia</option>
+                    <option value="">Esporte</option>
+                    <option value="">Plataforma</option>
+                    <option value="">Horror</option>
+                </select>
             </label>
+
             <label>
-                <span class="subtittle">Confirmar senha:</span>
-                <input type="password" id="iptConfirmPssw">
+                <span class="subtittle">Qual dispostivo você costuma usar para jogar?</span>
+
+                <select id="">
+                    <option value="">Console</option>
+                    <option value="">Computador</option>
+                    <option value="">Gameboards</option>
+                    <option value="">Dispostivos Móveis</option>
+                </select>
             </label>
-        </div>
-        <div class="sign">
-            <button>CADASTRAR-SE</button>
-            <span>FAZER <a href="../public/login.html">LOGIN</a></span>
-        </div>   
-    </div>
 
-    <div id="form_section"> <!-- vai ser escondida inicialmente -->
-        <span class="tittle">Cadastro</span>
+            <label>
+                <span class="subtittle">Nos conte quantos jogos você já jogou:</span>
+                <input type="number" class="iptSign">
+            </label>
 
-        <label>
-        <span class="subtittle">Selecione seu gênero de jogos favorito:</span>
-
-        <select id="">
-            <option value="">Ação</option>
-            <option value="">Aventura</option>
-            <option value="">RPG</option>
-            <option value="">Battle Royale</option> 
-            <option value="">Simulação</option>
-            <option value="">Indie</option>
-            <option value="">MOBA</option>
-            <option value="">Estratégia</option>
-            <option value="">Esporte</option>
-            <option value="">Plataforma</option>
-            <option value="">Horror</option>
-        </select>
-        </label>
-        
-        <label>
-        <span class="subtittle">Qual dispostivo você costuma usar para jogar?</span> 
-        
-        <select id="">
-            <option value="">Console</option>
-            <option value="">Computador</option>
-            <option value="">Gameboards</option>
-            <option value="">Dispostivos Móveis</option>
-        </select>
-        </label>
-        
-        <label>
-        <span class="subtittle">Nos conte quantos jogos você já jogou:</span>
-        <input type="number">
-        </label>
-        
-        <div class="sign">
-            <button>TUDO PRONTO!</button>
+            <div class="sign">
+                <button onclick="cadastro()">TUDO PRONTO!</button>
+            </div>
         </div>
     </div>
 </body>
+<footer>
+
+</footer>
 
 </html>
+
+<script>
+
+    function formu() {
+        document.getElementById('signup_section').style.display = 'none';
+        document.getElementById('form_section').style.display = 'flex'
+    }
+
+    function cadastro() {
+        document.getElementById('signup_section').style.display = 'flex'
+        document.getElementById('form_section').style.display = 'none';
+    }
+
+</script>
