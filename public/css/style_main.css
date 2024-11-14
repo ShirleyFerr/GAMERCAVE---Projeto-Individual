@@ -1,5 +1,5 @@
 header {
-    height: 150px;
+    height: 100px;
     width: auto;
     display: flex;
     justify-content: space-between;
@@ -8,6 +8,9 @@ header {
     border-style: solid;
     border-width: 0px 0px 3px 0px;
     border-color: #7b5a8f;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 .tittle_icon {
     font-family: sans-serif;
@@ -76,3 +79,67 @@ body {
     width: 50px;
     height: 50px;
 }
+
+
+.timeline, .profile{
+    margin-left: 51vh;
+}
+
+
+
+/*area com estilização padrao de publicação*/
+.publicacao{
+    margin-top: 50px;
+    width: 800px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    background-color: #3B2B44;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 20px;
+    border-color: #7b5a8f;
+    color: #ffffff;
+    align-self: center;
+    justify-self: center;
+}
+
+.cabecalho-publicacao {
+    display: flex;
+    margin: 25px;
+    justify-content: space-between;
+    align-items: center;
+}
+.cabecalho-publicacao #perfil{
+    width: 80px;
+    height: 80px;
+}
+.cabecalho-publicacao #userIndentify {
+    display: flex;
+justify-content: baseline;
+}
+
+.cabecalho-publicacao #curtida {
+    width: 50px;
+    height: 50px;
+    align-self: flex-end;
+}
+
+.cabecalho-publicacao #userDiv{
+    display: flex;
+    flex-direction: column;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: x-large;
+    text-align: flex-start;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.publicacao #caixaTexto {
+    margin: 0px 25px;
+    width: 700px;
+    height: 200px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: large;
+}
+
