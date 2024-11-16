@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GamerCave | perfil</title>
+    <title>GamerCave | Estatísticas</title>
     <link rel="icon" href="./assets/favicon.png" type="image/png">
     <link rel="stylesheet" href="./css/style_main.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./javascript/main.js"></script>
-
 </head>
 <header>
     <div>
@@ -42,24 +42,20 @@
             <span>PERFIL</span>
         </div>
     </div>
-    
-    <div class="profile">
-        <div id="profileIndentify">
-            <img src="./assets/userIcon.png" alt="">
-            <div id="username">
-                <span>Nome_Usuário</span>
-                <span>@username</span>
+    <div class="content">
+        <div id="chart-space">
+            <div class="chart">
+                <canvas id="chartGen"></canvas>
+            </div>
+            <div class="chart">
+                <canvas id="chartDevice"></canvas>
+            </div>
+            <div class="chart">
+                <canvas id="chartQtd"></canvas>
             </div>
         </div>
-        <div id="biouser">   
-            <span>
-                lorem impsun hsahdihwg shaudgiquw asgduiqwg 
-            </span>
-        </div>
-        <button>Mudar Biografia</button>
-        <hr>
-        <!-- postagens do usuario -->
     </div>
 </body>
 
 </html>
+<script src="./javascript/dash.js"></script>

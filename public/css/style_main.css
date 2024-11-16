@@ -12,6 +12,7 @@ header {
     top: 0;
     z-index: 10;
 }
+
 .tittle_icon {
     font-family: sans-serif;
     color: #ffff;
@@ -24,7 +25,6 @@ header {
         1px 2px 2px #00ffff,
         4px 4px 5px black;
     align-self: center;
-    
 }
 
 header img {
@@ -33,6 +33,7 @@ header img {
     align-self: center;
     margin-right: 12px;
 }
+
 header div {
     display: flex;
     justify-content: center;
@@ -56,7 +57,7 @@ body {
     border-style: solid;
     border-width: 0px 3px 0px 0px;
     border-color: #7b5a8f;
-    
+
 }
 
 .sidebar div {
@@ -80,15 +81,44 @@ body {
     height: 50px;
 }
 
+.sidebar div:hover {
+    cursor: pointer;
+    scale: 1.1;
+}
 
-.timeline, .profile{
+.timeline,
+.profile {
     margin-left: 51vh;
 }
 
+#navbar-discover {
+    margin-left: 50vh;
+    display: flex;
+    justify-content: space-between;
 
+}
+
+#navbar-discover button {
+    width: 33.3%;
+    height: 40px;
+    border-style: solid;
+    border-width: 0px 3px 3px 3px;
+    border-color: #7b5a8f;
+    text-align: center;
+    font-size: large;
+    color: #ffffff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 700;
+    background-color: #261D2B;
+}
+
+#navbar-discover button:hover {
+    cursor: pointer;
+    background-color: #50355e;
+}
 
 /*area com estilização padrao de publicação*/
-.publicacao{
+.publicacao {
     margin-top: 50px;
     width: 800px;
     height: 350px;
@@ -110,13 +140,15 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-.cabecalho-publicacao #perfil{
+
+.cabecalho-publicacao #perfil {
     width: 80px;
     height: 80px;
 }
+
 .cabecalho-publicacao #userIndentify {
     display: flex;
-justify-content: baseline;
+    justify-content: baseline;
 }
 
 .cabecalho-publicacao #curtida {
@@ -125,7 +157,7 @@ justify-content: baseline;
     align-self: flex-end;
 }
 
-.cabecalho-publicacao #userDiv{
+.cabecalho-publicacao #userDiv {
     display: flex;
     flex-direction: column;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -143,3 +175,141 @@ justify-content: baseline;
     font-size: large;
 }
 
+
+.content {
+    margin-left: 51vh;
+}
+
+#chart-space {
+    display: flex;
+    flex-direction: row;
+}
+
+.chart {
+    width: 30vh;
+    height: 30vh;
+}
+
+.profile {
+    margin-top: 2vh;
+    margin-right: 2vh;
+    width: 70%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#profileIndentify {
+    display: flex;
+    margin-bottom: 30px;
+
+}
+
+#profileIndentify img {
+    margin-left: 150px;
+    height: 120px;
+    width: 120px;
+}
+
+#profileIndentify #username {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    justify-content: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: x-large;
+    color: #ffffff;
+    text-shadow: 1px 1px 1px #000000;
+}
+
+#username span {
+    padding: 5px;
+}
+
+#biouser {
+    margin-left: 300px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #ffffff;
+    font-size: large;
+}
+
+.profile button {
+    align-self: flex-start;
+    margin-top: 15px;
+    margin-left: 300px;
+    width: 150px;
+    height: 20px;
+}
+
+hr {
+    margin: 25px;
+    align-self: center;
+    width: 145vh;
+    border-width: 3px;
+    border-color: #7b5a8f;
+}
+
+#container-games {
+    margin-left: 51vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vh;
+}
+
+.game {
+    display: flex;
+    width: 400px;
+    height: 400px;
+    flex-direction: column;
+    background-color: #2c193a;
+    border: 3px solid #7b5a8f;
+    padding: 10px;
+    margin: 10px 0px;
+    border-radius: 30px;
+}
+
+.game img {
+    align-self: center;
+    height: 200px;
+    border-radius: 15px;
+}
+
+.game-section {
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.span-2 {
+    color: #ffffff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    font-size: medium;
+    align-self: center;  
+}
+
+.span-1 {
+    color: #ffffff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    font-size: large;
+    align-self: center;    
+}
+
+.span-tittle {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: larger;
+    text-shadow:
+        1px 0px 5px #ff00ff,
+        1px -1px 1px #00ffff,
+        2px -2px 1px #ff00ff,
+        1px 2px 2px #00ffff,
+        4px 4px 5px black;
+    align-self: center;
+}

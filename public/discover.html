@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GamerCave</title>
     <link rel="icon" href="./assets/favicon.png" type="image/png">
     <link rel="stylesheet" href="./css/style_main.css">
+    <script src="./javascript/main.js"></script>
 </head>
 <header>
     <div>
@@ -15,6 +17,7 @@
 
     <img src="./assets/userIcon.png" alt="perfilUsuario">
 </header>
+
 <body>
     <div class="sidebar">
         <div class="click" onclick="mostrarTimeline()">
@@ -38,5 +41,29 @@
             <span>PERFIL</span>
         </div>
     </div>
+    <div id="navbar-discover">
+        <button onclick="popular()">TÍTULOS POPULARES</button>
+        <button onclick="inclusivo()">GAMES INCLUSIVOS</button>
+        <button onclick="indie()">DESTAQUES INDIE</button>
+    </div>
+
+    <div id="container-games">
+
+        <div class="game-section" id="populares">
+
+        </div>
+
+        <div class="game-section" id="inclusivos">
+
+        </div>
+
+        <div class="game-section" id="indie">
+
+        </div>
+
+
+    </div>
 </body>
+
 </html>
+<script src="./javascript/script.js"></script>
