@@ -15,12 +15,12 @@ function cadastrar(nome, email, username, dtNasc, senha, genFav, devFav, qtdJogo
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
-    var instrucaoSql = `
-        INSERT INTO usuario (nome, username, email, dtNasc, senha) 
-        VALUES ('${nome}', '${username}', '${email}', '${dtNasc}', '${senha}');
+    var instrucaoSql = 
+        // INSERT INTO usuario (nome, username, email, dtNasc, senha) 
+        // VALUES ('${nome}', '${username}', '${email}', '${dtNasc}', '${senha}');`
         
-        INSERT INTO preferencia (generoFav, dispositivoFav, qtdJogos, fkUser) 
-        VALUES ('${genFav}', '${devFav}', ${qtdJogos}, LAST_INSERT_ID())
+        `INSERT INTO preferencia (generoFav, dispositivoFav, qtdJogos) 
+        VALUES ('${genFav}', '${devFav}', ${qtdJogos});
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

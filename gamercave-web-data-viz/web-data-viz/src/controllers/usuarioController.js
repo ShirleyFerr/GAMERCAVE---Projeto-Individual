@@ -75,6 +75,10 @@ function cadastrar(req, res) {
         res.status(400).send("Seu username está undefined!");
     } else if (qtdJogos == undefined){
         res.status(400).send("Sua quantidade de jogos está undefined!");
+    } else if (genFav == undefined){
+        res.status(400).send("Genero favorito está undefined!");
+    } else if (devFav == undefined){
+        res.status(400).send(" está undefined!");
     }
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
