@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamerCave | Login</title>
+    <link rel="stylesheet" href="css/style_sign.css">
+    <link rel="icon" href="./public/assets/favicon.png" type="image/png">
+</head>
+<header>
+    <a href="./homepage.html"><img class="icon" src="./assets/gamercave_icon1.png"></a>
+    <a href="./homepage.html"><span class="tittle">GamerCave</span></a>
+</header>
+<body class="bodySign">
+    <main class="sign_main">
+        <img src="./assets/pixel2.jpeg">
+        <div id="signin_section">
+
+            <span class="tittle">Login</span>
+
+            <span id="welcome">BEM VINDO(A) <span> DE VOLTA!</span></span>
+
+            <label>
+                <span class="subtittle">E-mail:</span>
+                <input type="text" id="email_input" class="iptSign">
+            </label>
+
+            <label>
+                <span class="subtittle">Senha:</span>
+                <input type="password" id="senha_input" class="iptSign">    
+            </label>
+            
+            <div class="sign">
+            <button onclick="entrar()">LOGIN</button>
+            <span>NÃO TEM UMA CONTA? FAZER<a href="../public/cadastro.html">CADASTRO</a></span>
+            </div>
+
+        </div>
+    </main>
+</body>
+<footer>
+
+</footer>
+</html>
+<script>
+
+
+    function entrar() {
+        aguardar();
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+                    setTimeout(function () {
+                        window.location = "./timeline.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>

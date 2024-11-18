@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamerCave | Cadastro</title>
+    <link rel="stylesheet" href="css/style_sign.css">
+    <link rel="icon" href="../public/assets/favicon.png" type="image/png">
+</head>
+<header>
+    <a href="./homepage.html"><img class="icon" src="./assets/gamercave_icon1.png"></a>
+    <a href="./homepage.html"><span class="tittle">GamerCave</span></a>
+</header>
+
+<body class="bodySign">
+    <div id="body">
+        <img src="./assets/pixel1.jpg">
+        <div id="signup_section">
+            <span class="tittle">Cadastro</span>
+            <label>
+                <span class="subtittle">Nome Completo:</span>
+                <input type="text" id="iptNome" class="iptSign">
+            </label>
+            <label>
+                <span class="subtittle">E-mail:</span>
+                <input type="text" id="iptEmail" class="iptSign">
+            </label>
+
+            <div class="mini_section">
+                <label>
+                    <span class="subtittle">Data de nascimento:</span>
+                    <input type="date" id="iptDtNasc" class="iptSign">
+                </label>
+                <label>
+                    <span class="subtittle">Username:</span>
+                    <input type="text" id="iptUserName" class="iptSign">
+                </label>
+            </div>
+
+            <div class="mini_section">
+                <label>
+                    <span class="subtittle">Senha:</span>
+                    <input type="password" id="iptPssw" class="iptSign">
+                </label>
+                <label>
+                    <span class="subtittle">Confirmar senha:</span>
+                    <input type="password" id="iptConfirmPssw" class="iptSign">
+                </label>
+            </div>
+            <div class="sign">
+                <button onclick="continuar()">CADASTRAR-SE</button>
+                <span>FAZER <a href="../public/login.html">LOGIN</a></span>
+            </div>
+        </div>
+
+        <div id="form_section"> <!-- vai ser escondida inicialmente -->
+            <span class="tittle">Quase lá...</span>
+
+            <label>
+                <span class="subtittle">Selecione seu gênero de jogos favorito:</span>
+
+                <select id="select_gen">
+                    <option value="">Ação</option>
+                    <option value="">Aventura</option>
+                    <option value="">RPG</option>
+                    <option value="">Battle Royale</option>
+                    <option value="">Simulação</option>
+                    <option value="">Indie</option>
+                    <option value="">MOBA</option>
+                    <option value="">Estratégia</option>
+                    <option value="">Esporte</option>
+                    <option value="">Plataforma</option>
+                    <option value="">Horror</option>
+                </select>
+            </label>
+
+            <label>
+                <span class="subtittle">Qual dispostivo você costuma usar para jogar?</span>
+
+                <select id="select_device">
+                    <option value="">Console</option>
+                    <option value="">Computador</option>
+                    <option value="">Gameboards</option>
+                    <option value="">Dispostivos Móveis</option>
+                </select>
+            </label>
+
+            <label>
+                <span class="subtittle">Nos conte quantos jogos você já jogou:</span>
+                <input id="ipt_qtdJogos" type="number" class="iptSign">
+            </label>
+
+            <div class="sign">
+                <button onclick="cadastrar()">TUDO PRONTO!</button>
+            </div>
+        </div>
+    </div>
+</body>
+<footer>
+
+</footer>
+
+</html>
+
+<script>
+
+    function continuar() {
+        document.getElementById('signup_section').style.display = 'none';
+        document.getElementById('form_section').style.display = 'flex'
+    }
+
+    // function cadastro() {
+    //     document.getElementById('signup_section').style.display = 'flex'
+    //     document.getElementById('form_section').style.display = 'none';
+    // }
+
+  
+    function cadastrar() {
+      // aguardar();
+  
+      //Recupere o valor da nova input pelo nome do id
+      // Agora vá para o método fetch logo abaixo
+      var nome = iptNome.value;
+      var username = iptUserName.value;
+      var email = iptEmail.value;
+      var dtNasc = iptDtNasc.value;
+      var senha = iptPssw.value;
+      var confirmaSenha = iptConfirmPssw.value;
+
+      var generoFav = select_gen.value;
+      var deviceFav = select_device.value;
+      var qtdJogos = Number(ipt_qtdJogos)
+
+  
+      // Verificando se há algum campo em branco
+      if (
+        nome == "" ||
+        email == "" ||
+        senha == "" ||
+        confirmaSenha == "" ||
+        username == "" ||
+        dtNasc == "" ||
+        qtdJogos == ""
+      ) {
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+  
+        finalizarAguardar();
+        return false;
+      } else {
+        setInterval(sumirMensagem, 5000);
+      }
+  
+      // Enviando o valor da nova input
+      fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          nomeServer: nome,
+          usernameServer: username,
+          emailServer: email,
+          senhaServer: senha,
+          dtNascServer: dtNasc,
+          genServer: generoFav,
+          deviceServer: deviceFav,
+          qtdJogosServer: qtdJogos
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+  
+          if (resposta.ok) {
+            cardErro.style.display = "block";
+  
+            mensagem_erro.innerHTML =
+              "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+  
+            setTimeout(() => {
+              window.location = "login.html";
+            }, "2000");
+  
+            limparFormulario();
+            finalizarAguardar();
+          } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+          finalizarAguardar();
+        });
+  
+      return false;
+    }
+  
+  
+    function sumirMensagem() {
+      cardErro.style.display = "none";
+    }
+  </script>

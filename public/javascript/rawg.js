@@ -1,49 +1,51 @@
 const apiKey = 'e3f41b01d9694e62a488ca872eddbd85';
-let url = `https://api.rawg.io/api/games?key=${apiKey}&ordering=rating&page_size=6`;
+let url = `https://api.rawg.io/api/games?key=${apiKey}&ordering=rating&page_size=9`;
 var selectCat = 'populares';
 
+//essa funçao é chamada logo depois, atribui a url de acordo com a categoria e chama o initFetch
 function fetchGames() {
   if (selectCat === 'populares') {
-    url = `https://api.rawg.io/api/games?key=${apiKey}&dates=2020-01-01,2024-12-31&ordering=metacritic=100&page_size=6`;
+    url = `https://api.rawg.io/api/games?key=${apiKey}&dates=2020-01-01,2024-12-31&ordering=metacritic=100&page_size=9`;
     initFecth()
   } else if (selectCat === 'inclusivos') {
     url = `https://api.rawg.io/api/games?key=${apiKey}&search=The+Last+of+Us+Smash+Bros+Overcooked&page_size=6`;
     initFecth()
   } else if (selectCat === 'indie') {
-    url = `https://api.rawg.io/api/games?key=${apiKey}&dates=2011-01-01,2024-12-31&ordering=metacritic=100&genres=indie&page_size=6`;
+    url = `https://api.rawg.io/api/games?key=${apiKey}&dates=2011-01-01,2024-12-31&ordering=metacritic=100&genres=indie&page_size=9`;
     initFecth()
   }
 }
 
+//validacao caso tenha algum problema com o chamado da api pela url
 if (!url) {
   console.error("A URL não foi definida corretamente.");
 }
 
+// a funcao initFecth é chamada toda vez que o usuario escolhe um botão
 function initFecth() {
   fetch(url)
     .then(response => response.json())
     .then(data => {
-      const container = document.getElementById(selectCat);
-      container.innerHTML = '';  // Limpa o conteúdo da div antes de adicionar novos jogos
+      const container = document.getElementById(selectCat); //pega a div da categoria escolhida usando a variavel que tem o mesmo nome do id
+      container.innerHTML = '';  //limpa a div antes de adicionar novos jogos
 
       data.results.forEach(game => {
-        // Cria um novo elemento para o jogo
-        const gameElement = document.createElement('div');
-        gameElement.classList.add('game');
+        const gameElement = document.createElement('div'); //cria uma nova div pra infos do jogo o jogo
+        gameElement.classList.add('game'); // adiciona a class game na div criada agora
 
-        // Adiciona o título do jogo
+        // cria uma span
         const gameTittle = document.createElement('span');
-        gameTittle.textContent = game.name;
-        gameTittle.classList.add('span-tittle');
-        gameElement.appendChild(gameTittle);
+        gameTittle.textContent = game.name; //adiciona o nome do jogo ao conteudo da span
+        gameTittle.classList.add('span-tittle'); //adiciona  a classe p/ estilização
+        gameElement.appendChild(gameTittle); //coloca a span do titulo dentro da div game
 
-        // Adiciona as plataformas do jogo
+        //add as plataformas do jogo
         const gameDevice = document.createElement('span');
         var platformsText = "";
 
-        for (var i = 0; i < game.platforms.length; i++) {
-          platformsText += game.platforms[i].platform.name;
-            if (i < game.platforms.length - 1) {
+        for (var index = 0; index < game.platforms.length; index++) {
+          platformsText += game.platforms[index].platform.name;
+            if (index < game.platforms.length - 1) {
               platformsText += ", ";
             }
         }
@@ -52,19 +54,19 @@ function initFecth() {
         gameDevice.classList.add('span-2');
         gameElement.appendChild(gameDevice);
 
-        // Adiciona a data de lancamento do jogo
+        //add a data de lancamento do jogo
         const gameReleased = document.createElement('span');
         gameReleased.textContent = game.released;
         gameReleased.classList.add('span-1');
         gameElement.appendChild(gameReleased);
 
-        // Adiciona a imagem de capa do jogo
+        //add a imagem de capa do jogo
         const gameImage = document.createElement('img');
         gameImage.src = game.background_image;
         gameImage.alt = game.name;
         gameElement.appendChild(gameImage);
 
-        // Adiciona o jogo na div correspondente
+        //add a div game na div correspondente
         container.appendChild(gameElement);
       });
     })
@@ -72,6 +74,7 @@ function initFecth() {
 }
 
 
+// essa funçao é chamada primeiro pelo user, escolhendo a div e atribuindo o valor da variavel e chama a fetchGames
 function popular() {
   document.getElementById('populares').style.display = 'flex';
   document.getElementById('inclusivos').style.display = 'none';
