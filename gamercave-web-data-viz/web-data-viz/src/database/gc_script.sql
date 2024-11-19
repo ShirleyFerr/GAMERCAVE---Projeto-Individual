@@ -19,7 +19,7 @@ create table publicacao (
 );
 
 create table curtida (
-	idLike int,
+	  idLike int,
     fkUser int,
     fkPubli int,
     constraint fkusuario foreign key (fkUSer) references usuario(idUser),

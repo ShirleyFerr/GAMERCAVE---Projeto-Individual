@@ -1,65 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GamerCave | perfil</title>
-    <link rel="icon" href="./assets/favicon.png" type="image/png">
-    <link rel="stylesheet" href="./css/style_main.css">
+    <link rel="icon" href="./assets/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="./css/style_main.css" />
     <script src="./js/main.js"></script>
-
-</head>
-<header>
+  </head>
+  <header>
     <div>
-        <img src="./assets/gamercave_icon1.png">
-        <span class="tittle_icon">GamerCave</span>
+      <img src="./assets/gamercave_icon1.png" />
+      <span class="tittle_icon">GamerCave</span>
     </div>
 
-    <img src="./assets/userIcon.png" alt="perfilUsuario">
-</header>
+    <img src="./assets/userIcon.png" alt="perfilUsuario" />
+  </header>
 
-<body>
+  <body>
     <div class="sidebar">
-        <div class="click" onclick="mostrarTimeline()">
-            <img src="./assets/homeIcon.png" alt="">
-            <span>HOME</span>
-        </div>
-        <div class="click" onclick="novaPublicacao()">
-            <img src="./assets/icon-new-publi.png" alt="">
-            <span>Publicar</span>
-        </div>
-        <div class="click" onclick="mostrarDiscover()">
-            <img src="./assets/discoverIcon.png" alt="">
-            <span>DISCOVER</span>
-        </div>
-        <div class="click" onclick="mostrarDash()">
-            <img src="./assets/icon-dash.png" alt="">
-            <span>Estatísticas</span>
-        </div>
-        <div class="click" onclick="mostrarPerfil()">
-            <img src="./assets/userIcon.png" alt="">
-            <span>PERFIL</span>
-        </div>
+      <div class="click" onclick="mostrarTimeline()">
+        <img src="./assets/homeIcon.png" alt="" />
+        <span>HOME</span>
+      </div>
+      <div class="click" onclick="novaPublicacao()">
+        <img src="./assets/icon-new-publi.png" alt="" />
+        <span>Publicar</span>
+      </div>
+      <div class="click" onclick="mostrarDiscover()">
+        <img src="./assets/discoverIcon.png" alt="" />
+        <span>DISCOVER</span>
+      </div>
+      <div class="click" onclick="mostrarDash()">
+        <img src="./assets/icon-dash.png" alt="" />
+        <span>Estatísticas</span>
+      </div>
+      <div class="click" onclick="mostrarPerfil()">
+        <img src="./assets/userIcon.png" alt="" />
+        <span>PERFIL</span>
+      </div>
     </div>
-    
-    <div class="profile">
-        <div id="profileIndentify">
-            <img src="./assets/userIcon.png" alt="">
-            <div id="username">
-                <span>Nome_Usuário</span>
-                <span>@username</span>
-            </div>
-        </div>
-        <div id="biouser">   
-            <span>
-                lorem impsun hsahdihwg shaudgiquw asgduiqwg 
-            </span>
-        </div>
-        <button>Mudar Biografia</button>
-        <hr>
-        <!-- postagens do usuario -->
-    </div>
-</body>
 
+    <div onload="carregarPerfil()" class="profile">
+      <div id="profileIndentify">
+        <img src="./assets/userIcon.png" alt="" />
+        <div id="username">
+          <span id="nomeUsuario"></span>
+          <span id="user_name"></span>
+        </div>
+      </div>
+      <div id="biouser">
+        <span id="biografia">
+          lorem impsun hsahdihwg shaudgiquw asgduiqwg
+        </span>
+      </div>
+      <button onclick="mudarBio()" id="button_bio">Mudar Biografia</button>
+      <hr />
+      <!-- postagens do usuario -->
+    </div>
+    <div>
+      <!-- <div class="publicacao">
+            <div class="cabecalho-publicacao">
+                <div id="userIndentify">
+                    
+                        <img id="perfil" src="./assets/userIcon.png" alt="">
+                    
+                    <div id="userDiv">
+                        <span>Nome_Usuário</span>
+                        <span>@username</span>
+                    </div>
+                </div>
+                <div>
+                    <img id="curtida" src="./assets/curtida-vazia.png" alt="">
+                </div>
+            </div>
+            <div id="caixaTexto">lorem ipsum etc etc etc</div>
+        </div> -->
+    </div>
+  </body>
 </html>
+<script>
+  nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO;
+  user_name.innerHTML = "@" + sessionStorage.USERNAME;
+  biografia.innerHTML = sessionStorage.USER_BIO;
+
+  function carregarPerfil() {}
+
+  function mudarBio() {
+    document.getElementById("biografia").style.display = "none";
+    var inputBio = document.createElement("input");
+    inputBio.type = 'text'
+    inputBio.id = "input_bio";
+    document.bio.appendChild('input_bio');
+  }
+</script>
