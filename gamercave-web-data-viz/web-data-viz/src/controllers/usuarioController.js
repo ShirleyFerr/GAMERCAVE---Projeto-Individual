@@ -1,5 +1,4 @@
 var usuarioModel = require("../models/usuarioModel");
-// var aquarioModel = require("../models/aquarioModel");
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -20,15 +19,16 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
                         //fazer alteração aqui pra encaixar com o perfil?
-                        aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].empresaId)
-                            .then((resultadoAquarios) => {
-                                if (resultadoAquarios.length > 0) {
+                        usuarioModel.buscarPerfilUsuario(resultadoAutenticar[0].idUser)
+                            .then((resultadoPerfil) => {
+                                if (resultadoPerfil.length > 0) {
                                     res.json({
-                                        id: resultadoAutenticar[0].id,
+                                        idUser: resultadoAutenticar[0].idUser,
                                         email: resultadoAutenticar[0].email,
                                         nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha,
-                                        aquarios: resultadoAquarios
+                                        username: resultadoAutenticar[0].username,
+                                        biografia: resultadoAutenticar[0].biografia
                                     });
                                 } else {
                                     res.status(204).json({ aquarios: [] });
