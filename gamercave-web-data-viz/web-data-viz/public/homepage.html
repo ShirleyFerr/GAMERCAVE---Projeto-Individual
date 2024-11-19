@@ -17,12 +17,17 @@
             <span class="tittle">GamerCave</span>
             <p>Junte-se a nós para novas descobertar e compartilhar suas jogatinas!</p>
             <div class="sign">
-                <button>CADASTRAR-SE</button>
+                <button onclick="telaCadastro()">CADASTRAR-SE</button>
                 
-                <span>FAZER <a href="../public/login.html">LOGIN</a></span>
+                <span>FAZER <a href="../login.html">LOGIN</a></span>
             </div>
         </div>
 
     </main>
 </body>
 </html>
+<script>
+    function telaCadastro() {
+        window.location.href = '../cadastro.html'
+    }
+</script>

@@ -32,7 +32,7 @@
             </label>
             
             <div class="sign">
-            <button onclick="entrar()">LOGIN</button>
+            <button onclick="autenticar()">LOGIN</button>
             <span>NÃO TEM UMA CONTA? FAZER<a href="../public/cadastro.html">CADASTRO</a></span>
             </div>
 
@@ -46,8 +46,7 @@
 <script>
 
 
-    function entrar() {
-        aguardar();
+    function autenticar() {
 
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
@@ -55,7 +54,7 @@
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
+            finalizar;
             return false;
         }
         else {
@@ -86,7 +85,7 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+                    // sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                     setTimeout(function () {
                         window.location = "./timeline.html";

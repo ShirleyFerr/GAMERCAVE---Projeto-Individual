@@ -1,16 +1,16 @@
 // funcoes para cada tela 
 function mostrarTimeline(){
-    window.location.href = '../public/timeline.html';
+    window.location.href = '../timeline.html';
 }
 
 function mostrarDiscover(){
-    window.location.href = '../public/discover.html';
+    window.location.href = '../discover.html';
 }
 
 function mostrarDash(){
-    window.location.href = '../public/dashboard.html';
+    window.location.href = '../dashboard.html';
 } 
 
 function mostrarPerfil(){
-    window.location.href = '../public/perfil.html';
+    window.location.href = '../perfil.html';
 }

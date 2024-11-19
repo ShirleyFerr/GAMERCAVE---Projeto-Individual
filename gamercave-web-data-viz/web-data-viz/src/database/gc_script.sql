@@ -40,3 +40,6 @@ create table preferencia (
     fkUser int,
     constraint fk_usuario foreign key (fkUser) references usuario(idUser)
 ) auto_increment = 1000;
+
+select * from usuario;
+select * from preferencia;
