@@ -17,7 +17,8 @@ var app = express();
 
 
 var usuarioRouter = require("./src/routes/usuarios");
-var dashRouter = require("./src/routes/dashboard")
+var dashRouter = require("./src/routes/dashboard");
+var publicacaoRouter = require("./scr/routes/publicacao");
 
 
 app.use(express.json());
@@ -29,9 +30,8 @@ app.use(cors());
 // app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/dash", dashRouter);
-// app.use("/medidas", medidasRouter);
-// app.use("/aquarios", aquariosRouter);
-// app.use("/empresas", empresasRouter);
+app.use("/publicacao", publicacaoRouter);
+
 
 app.listen(PORTA_APP, function () {
     console.log(`
