@@ -3,8 +3,8 @@ var router = express.Router();
 
 var dashController = require("../controllers/dashController");
 
-router.get("/dashboard", function (req, res) { // ou é /dash?
-    dashController.dashboard(req, res);
+router.get("/listar", function (req, res) { // ou é /dash?
+    dashController.listar(req, res);
 });
 
 module.exports = router;

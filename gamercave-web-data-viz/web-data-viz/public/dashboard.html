@@ -45,17 +45,125 @@
     <div class="content">
         <div id="chart-space">
             <div class="chart">
-                <canvas id="chartGen"></canvas>
+                <canvas id="chartGenero"></canvas>
             </div>
             <div class="chart">
-                <canvas id="chartDevice"></canvas>
+                <canvas id="chartDispositivo"></canvas>
             </div>
             <div class="chart">
-                <canvas id="chartQtd"></canvas>
+                <canvas id="chartMedia"></canvas>
             </div>
         </div>
     </div>
 </body>
-</html>
-<script src="./js/dash.js"></script>
 
+</html>
+<script>
+    // Inicializar gráficos vazios com placeholders
+    const ctx1 = document.getElementById('chartGenero');
+    const ctx2 = document.getElementById('chartDispositivo');
+    const ctx3 = document.getElementById('chartMedia');
+
+    // Gráfico de Gêneros Favoritos
+    const chartGenero = new Chart(ctx1, {
+        type: 'pie',
+        data: {
+            labels: [], // Inicial vazio
+            datasets: [{
+                data: [], // Inicial vazio
+                backgroundColor: ['#5f253a',
+                    '#db739b',
+                    '#fcf7aa',
+                    '#0fd981',
+                    '#ba74a9',
+                    '#340a31',
+                    '#22e5c9',
+                    '#a80888',
+                    '#33323d',
+                    '#c05b8f',
+                    '#92d312']
+            }]
+        }
+    });
+
+    // Gráfico de Dispositivos Favoritos
+    const chartDispositivo = new Chart(ctx2, {
+        type: 'pie',
+        data: {
+            labels: [], // Inicial vazio
+            datasets: [{
+                data: [], // Inicial vazio
+                backgroundColor: ['#4BC0C0', '#FF9F40', '#9966FF', '#F9e6aa']
+            }]
+        }
+    });
+
+    // Gráfico de Média de Jogos por Usuário
+    const chartMedia = new Chart(ctx3, {
+        type: 'bar',
+        data: {
+            labels: ["Média de Jogos por Jogador"], // Label fixa
+            datasets: [{
+                data: [0], // Inicial vazio
+                backgroundColor: ['#FF6384']
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Função para obter dados do backend
+    function obterDadosJogos() {
+        return fetch('/dash/listar')
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json(); // Retorna vetor
+                } else {
+                    console.error('Erro ao buscar dados: ', response.statusText);
+                    return null;
+                }
+            })
+            .catch(function (erro) {
+                console.error('Erro na requisição:', erro.message);
+            });
+    }
+
+    function atualizarGraficos() {
+        obterDadosJogos()
+            .then(function (dados) {
+                if (dados) {
+                    // chart genero de jogos
+                    var generoFav = dados[0]; // Posição 0 no vetor
+                    var labelsGenero = generoFav.map(d => d.generoFav);
+                    var valoresGenero = generoFav.map(d => d.quantidadePessoas);
+
+                    chartGenero.data.labels = labelsGenero;
+                    chartGenero.data.datasets[0].data = valoresGenero;
+                    chartGenero.update();
+
+                    // chart dispositivos
+                    var dispositivoFav = dados[1]; // Posição 1 no vetor
+                    var labelsDispositivo = dispositivoFav.map(d => d.dispositivoFav);
+                    var valoresDispositivo = dispositivoFav.map(d => d.quantidadePessoas);
+
+                    chartDispositivo.data.labels = labelsDispositivo;
+                    chartDispositivo.data.datasets[0].data = valoresDispositivo;
+                    chartDispositivo.update();
+
+                    // chart media
+                    var mediaJogos = dados[2]; // Posição 2 no vetor
+                    var valorMedia = mediaJogos[0]?.mediaJogosPorJogador || 0; // Adicionar verificação de segurança
+                    chartMedia.data.datasets[0].data = [valorMedia];
+                    chartMedia.update();
+
+                }
+            });
+    }
+
+    window.onload = atualizarGraficos;
+</script>
