@@ -21,6 +21,7 @@ var dashRouter = require("./src/routes/dashboard");
 var publicacaoRouter = require("./scr/routes/publicacao");
 
 
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));

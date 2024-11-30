@@ -7,14 +7,13 @@
     <title>GamerCave | Home</title>
     <link rel="icon" href="./assets/favicon.png" type="image/png">
     <link rel="stylesheet" href="./css/style_main.css">
-    <script src="./js/main.js"></script>
 </head>
 <header>
     <div>
         <img src="./assets/gamercave_icon1.png">
         <span class="tittle_icon">GamerCave</span>
     </div>
-
+    
     <img src="./assets/userIcon.png" alt="perfilUsuario">
 </header>
 
@@ -41,12 +40,14 @@
             <span>PERFIL</span>
         </div>
     </div>
-    <div class="timeline">
-        <div class="publicacao">
+    <div class="timeline" id="timeline">
+      
+    
+        <!-- <div class="publicacao">
             <div class="cabecalho-publicacao">
-                <div id="userIndentify">
+                <div class="userIndentify" id="userIndentify">
                     
-                        <img id="perfil" src="./assets/userIcon.png" alt="">
+                    <img id="perfil" src="./assets/userIcon.png" alt="">
                     
                     <div id="userDiv">
                         <span>Nome_Usuário</span>
@@ -58,62 +59,88 @@
                 </div>
             </div>
             <div id="caixaTexto">lorem ipsum etc etc etc</div>
-        </div>
-        <div class="publicacao">
-            <div class="cabecalho-publicacao">
-                <div id="userIndentify">
-                    
-                        <img id="perfil" src="./assets/userIcon.png" alt="">
-                    
-                    <div id="userDiv">
-                        <span>Nome_Usuário</span>
-                        <span>@username</span>
-                    </div>
-                </div>
-                <div>
-                    <img id="curtida" src="./assets/curtida-vazia.png" alt="">
-                </div>
-            </div>
-            <div id="caixaTexto">lorem ipsum etc etc etc</div>
-        </div>
-        <div class="publicacao">
-            <div class="cabecalho-publicacao">
-                <div id="userIndentify">
-                    
-                        <img id="perfil" src="./assets/userIcon.png" alt="">
-                    
-                    <div id="userDiv">
-                        <span>Nome_Usuário</span>
-                        <span>@username</span>
-                    </div>
-                </div>
-                <div>
-                    <img id="curtida" src="./assets/curtida-vazia.png" alt="">
-                </div>
-            </div>
-            <div id="caixaTexto">lorem ipsum etc etc etc</div>
-        </div>
-        <div class="publicacao">
-            <div class="cabecalho-publicacao">
-                <div id="userIndentify">
-                    
-                        <img id="perfil" src="./assets/userIcon.png" alt="">
-                    
-                    <div id="userDiv">
-                        <span>Nome_Usuário</span>
-                        <span>@username</span>
-                    </div>
-                </div>
-                <div>
-                    <img id="curtida" src="./assets/curtida-vazia.png" alt="">
-                </div>
-            </div>
-            <div id="caixaTexto">lorem ipsum etc etc etc</div>
-        </div>
+        </div> -->
+
     </div>
 </body>
 
 </html>
+<script src="./js/main.js"></script>
 <script>
+    function listarPublis(){
+        fetch("/publicacao/listarPublis").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
 
+                resposta.json().then(function (resposta) {
+                    
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("timeline");
+                    // feed.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        var cardPubli = document.createElement('div');
+                        var cardHeader = document.createElement('div');
+                        var cardIdentify = document.createElement('div');
+                        var imgUser = document.createElement('img')
+                        var divUserName = document.createElement('div');
+                        var span_name = document.createElement('span');
+                        var span_username = document.createElement('span');
+                        var divCurtida = document.createElement('div');
+                        var imgCurtida = document.createElement('img');
+                        var conteudoPubli = document.createElement('div'); 
+
+                        span_name.innerHTML = userPubli;
+                        span_username.innerHTML = userNamePubli;
+                        conteudoPubli.innerHTML = contentPubli;
+
+                        cardIdentify.id = 'userIndentify';
+                        imgUser.id = 'perfil';
+                        divUserName.id = 'userDiv'; 
+                        imgCurtida.id = 'curtida';
+                        conteudoPubli.id = 'caixaTexto';
+
+                        cardPubli.classList.add('publicacao');
+                        cardHeader.classList.add('cabecalho-publicacao');
+                        cardIdentify.classList.add('userIndentify');
+                        divUserName.classList.add('userDiv');
+                        
+                        imgCurtida.src = './assets/curtida-vazia.png'
+                        imgUser.src = './assets/userIcon.png'
+
+                        cardPubli.appendChild(cardHeader);
+                        cardHeader.appendChild(cardIdentify);
+                        cardIdentify.appendChild(imgUser);
+                        cardIdentify.appendChild(divUserName);
+                        divUserName.appendChild(span_name);
+                        divUserName.appendChild(span_username);
+                        cardHeader.appendChild(divCurtida);
+                        divCurtida.appendChild(imgCurtida);
+                        conteudoPubli.appendChild(cardPubli);
+                        
+                        feed.appendChild(cardPubli);
+
+                    }
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+            }).catch(function (resposta) {
+            console.error(resposta);
+            });
+        }
+    
+    window.onload = function(){
+        listarPublis();
+    }
+
+    setInterval(listarPublis, 10000)
 </script>

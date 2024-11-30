@@ -1,4 +1,4 @@
-var database = require("../database/config");
+ var database = require("../database/config");
 
 function listar() {
     var instrucaoSql1 = 
@@ -17,13 +17,13 @@ function listar() {
     
     return database.executar(instrucaoSql1)
         .then(result1 => {
-            console.log("Resultado da consulta de Gênero Favorito: ", result1);
+            console.log("Resultado da consulta de gênero favorito: ", result1);
             return database.executar(instrucaoSql2)
                 .then(result2 => {
-                    console.log("Resultado da consulta de Dispositivo Favorito: ", result2);
+                    console.log("Resultado da consulta de dispositivo Favorito: ", result2);
                     return database.executar(instrucaoSql3)
                         .then(result3 => {
-                            console.log("Resultado da consulta de Média de Jogos por Jogador: ", result3);
+                            console.log("Resultado da consulta de media de jogos por jogador: ", result3);
                             return [
                                 result1, //  dados do genero favorito
                                 result2, //  dados do dispositivo favorito

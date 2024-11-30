@@ -74,3 +74,9 @@ GROUP BY dispositivoFav;
 
 SELECT AVG(qtdJogos) as mediaJogosPorJogador
 FROM preferencia;
+
+SELECT p.idPubli, p.conteudo as contentPubli,
+u.nome as userPubli, u.username as usernamePubli
+from publicacao as p 
+JOIN usuario as u
+where p.fkUser = u.idUser
