@@ -23,15 +23,16 @@ function cadastrar(nome, email, username, dtNasc, senha, genFav, devFav, qtdJogo
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():",nome, email, username, dtNasc, senha);
 
     // Primeira query para inserir no usuario
-    var instrucaoSql = 
-        `INSERT INTO usuario (nome, username, email, dtNasc, senha) 
-        VALUES ('${nome}', '${username}', '${email}', '${dtNasc}', '${senha}');`;
+    var instrucaoSql = `
+        INSERT INTO usuario (nome, username, email, dtNasc, senha) 
+        VALUES ('${nome}', '${username}', '${email}', '${dtNasc}', '${senha}');
+        `;
     
     // Segunda query para inserir na tabela de preferências
     var instrucaoSql2 = `
         INSERT INTO preferencia (generoFav, dispositivoFav, qtdJogos) 
         VALUES ('${genFav}', '${devFav}', ${qtdJogos});
-    `;
+        `;
 
     console.log("Executando a instrução SQL 1: \n" + instrucaoSql);
     

@@ -18,7 +18,7 @@ var app = express();
 
 var usuarioRouter = require("./src/routes/usuarios");
 var dashRouter = require("./src/routes/dashboard");
-var publicacaoRouter = require("./scr/routes/publicacao");
+var publicacaoRouter = require("./src/routes/publicacao");
 
 
 

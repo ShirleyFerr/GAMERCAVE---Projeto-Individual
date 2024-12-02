@@ -41,8 +41,6 @@
         </div>
     </div>
     <div class="timeline" id="timeline">
-      
-    
         <!-- <div class="publicacao">
             <div class="cabecalho-publicacao">
                 <div class="userIndentify" id="userIndentify">
@@ -60,7 +58,6 @@
             </div>
             <div id="caixaTexto">lorem ipsum etc etc etc</div>
         </div> -->
-
     </div>
 </body>
 
@@ -83,9 +80,14 @@
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
 
                     var feed = document.getElementById("timeline");
-                    // feed.innerHTML = "";
+                    feed.innerHTML = "";
+                    resposta.reverse();
                     for (let i = 0; i < resposta.length; i++) {
                         var publicacao = resposta[i];
+
+                        var userPubli = publicacao.userPubli;
+                        var usernamePubli = publicacao.usernamePubli; 
+                        var contentPubli = publicacao.contentPubli; 
 
                         var cardPubli = document.createElement('div');
                         var cardHeader = document.createElement('div');
@@ -97,10 +99,12 @@
                         var divCurtida = document.createElement('div');
                         var imgCurtida = document.createElement('img');
                         var conteudoPubli = document.createElement('div'); 
+                        var dtHoraPubli = document.createElement('div')
 
                         span_name.innerHTML = userPubli;
-                        span_username.innerHTML = userNamePubli;
-                        conteudoPubli.innerHTML = contentPubli;
+                        span_username.innerHTML = `@${usernamePubli}`;
+                        conteudoPubli.innerHTML = publicacao.contentPubli;
+                        dtHoraPubli.innerHTML =`Publicado em ${publicacao.DtPublicacao}`; 
 
                         cardIdentify.id = 'userIndentify';
                         imgUser.id = 'perfil';
@@ -112,6 +116,8 @@
                         cardHeader.classList.add('cabecalho-publicacao');
                         cardIdentify.classList.add('userIndentify');
                         divUserName.classList.add('userDiv');
+                        conteudoPubli.classList.add('caixa-texto');
+                        dtHoraPubli.classList.add('dtHora-publi');
                         
                         imgCurtida.src = './assets/curtida-vazia.png'
                         imgUser.src = './assets/userIcon.png'
@@ -124,8 +130,9 @@
                         divUserName.appendChild(span_username);
                         cardHeader.appendChild(divCurtida);
                         divCurtida.appendChild(imgCurtida);
-                        conteudoPubli.appendChild(cardPubli);
-                        
+                        cardPubli.appendChild(conteudoPubli);
+                        cardPubli.appendChild(dtHoraPubli);
+
                         feed.appendChild(cardPubli);
 
                     }
@@ -142,5 +149,5 @@
         listarPublis();
     }
 
-    setInterval(listarPublis, 10000)
+    setInterval(listarPublis, 2000)
 </script>

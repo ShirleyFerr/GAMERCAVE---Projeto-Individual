@@ -18,7 +18,7 @@ function mostrarPerfil(){
 
 // criar bloco para nova publicacao enviar e desaparecer depois
 var containerNewPubli;
-var contentPubli;
+var content_publi;
 
 function novaPublicacao(){
     //cria todo o html e atribui o css via js em vez do doc html
@@ -31,9 +31,10 @@ function novaPublicacao(){
    
     var textAreaPubli = document.createElement('textarea');
     textAreaPubli.id = 'ipt_contentPubli';
-    contentPubli = document.getElementById('ipt_contentPubli');
     textAreaPubli.placeholder = 'Escreva algo para compartilhar...';
     boxNewPubli.appendChild(textAreaPubli);
+   
+   
     
     var btnPublicar = document.createElement('button');
     btnPublicar.innerText = 'Publicar';
@@ -55,11 +56,12 @@ function cancelar(){
 }
 
 function publicar(){
-
-    var content_publi = contentPubli;
+    var idUser = sessionStorage.ID_USUARIO;
+    var content_publi = document.getElementById('ipt_contentPubli').value;
 
     if (content_publi == ''){
-        console.error('nenhum conteúdo na publicacao')
+        console.error('nenhum conteúdo na publicacao');
+        alert('O conteúdo da publicacão não pode ser vazio');
         return false
     } 
     fetch('/publicacao/criarNewPubli', {
@@ -68,7 +70,8 @@ function publicar(){
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            publiContentServer: content_publi 
+            publiContentServer: content_publi, 
+            idUser: idUser,
         }),
     })
     .then(function (resposta) {
@@ -88,32 +91,8 @@ function publicar(){
       });
 
     containerNewPubli.remove();
-    contentPubli = '';
+    content_publi = '';
     console.log('tela de nova publicacao foi excluida!')
 }
 
 
-// timeline pegar as publis do banco e adicionar no site
-function mostrarPublicoes(){
-    cardPubli.classList.add('publicacao')
-
-    var cardHeader = document.createElement('div');
-    cardHeader.classList.add('cabecalho-publicacao');
-    cardPubli.appendChild(cardHeader);
-
-    cardIdentify.classList.add('userIndentify');
-    cardHeader.appendChild(cardIdentify);
-
-    imgUser.src = './assets/userIcon.png';
-    cardIdentify.appendChild(imgUser);
-
-    divUserName.classList.add('userDiv');
-    cardIdentify.appendChild(divUserName);
-
-
-    //esquece isso e faz um for 
-    
-
-
-    document.body.appendChild(cardPubli);
-}
