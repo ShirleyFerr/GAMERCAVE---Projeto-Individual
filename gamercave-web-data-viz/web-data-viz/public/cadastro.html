@@ -2,103 +2,103 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GamerCave | Cadastro</title>
-    <link rel="stylesheet" href="css/style_sign.css">
-    <link rel="icon" href="../public/assets/favicon.png" type="image/png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GamerCave | Cadastro</title>
+  <link rel="stylesheet" href="css/style_sign.css">
+  <link rel="icon" href="../public/assets/favicon.png" type="image/png">
 </head>
 <header>
-    <a href="./homepage.html"><img class="icon" src="./assets/gamercave_icon1.png"></a>
-    <a href="./homepage.html"><span class="tittle">GamerCave</span></a>
+  <a href="./homepage.html"><img class="icon" src="./assets/gamercave_icon1.png"></a>
+  <a href="./homepage.html"><span class="tittle">GamerCave</span></a>
 </header>
 
 <body class="bodySign">
-    <div id="body">
-        <img src="./assets/pixel1.jpg">
-        <div id="signup_section">
-            <span class="tittle">Cadastro</span>
-            <label>
-                <span class="subtittle">Nome Completo:</span>
-                <input type="text" id="iptNome" class="iptSign">
-            </label>
-            <label>
-                <span class="subtittle">E-mail:</span>
-                <input type="text" id="iptEmail" class="iptSign">
-            </label>
+  <div id="body">
+    <img src="./assets/pixel1.jpg">
+    <div id="signup_section">
+      <span class="tittle">Cadastro</span>
+      <label>
+        <span class="subtittle">Nome Completo:</span>
+        <input type="text" id="iptNome" class="iptSign">
+      </label>
+      <label>
+        <span class="subtittle">E-mail:</span>
+        <input type="text" id="iptEmail" class="iptSign">
+      </label>
 
-            <div class="mini_section">
-                <label>
-                    <span class="subtittle">Data de nascimento:</span>
-                    <input type="date" id="iptDtNasc" class="iptSign">
-                </label>
-                <label>
-                    <span class="subtittle">Username:</span>
-                    <input type="text" id="iptUserName" class="iptSign">
-                </label>
-            </div>
+      <div class="mini_section">
+        <label>
+          <span class="subtittle">Data de nascimento:</span>
+          <input type="date" id="iptDtNasc" class="iptSign">
+        </label>
+        <label>
+          <span class="subtittle">Username:</span>
+          <input type="text" id="iptUserName" class="iptSign">
+        </label>
+      </div>
 
-            <div class="mini_section">
-                <label>
-                    <span class="subtittle">Senha:</span>
-                    <input type="password" id="iptPssw" class="iptSign">
-                </label>
-                <label>
-                    <span class="subtittle">Confirmar senha:</span>
-                    <input type="password" id="iptConfirmPssw" class="iptSign">
-                </label>
-            </div>
-            <div id="mensagem_erro"></div>
-            <div class="sign">
-                <button onclick="continuar()">PRÓXIMA ETAPA</button>
-                <span>FAZER <a href="../login.html">LOGIN</a></span>
-            </div>
-        </div>
-
-        <div id="form_section"> <!-- vai ser escondida inicialmente -->
-            <span class="tittle">Quase lá...</span>
-
-            <label>
-                <span class="subtittle">Selecione seu gênero de jogos favorito:</span>
-
-                <select id="select_gen">
-                    <option >Ação</option>
-                    <option >Aventura</option>
-                    <option >RPG</option>
-                    <option >Battle Royale</option>
-                    <option >Simulação</option>
-                    <option >Indie</option>
-                    <option >MOBA</option>
-                    <option >Estratégia</option>
-                    <option >Esporte</option>
-                    <option >Plataforma</option>
-                    <option >Horror</option>
-                </select>
-            </label>
-
-            <label>
-                <span class="subtittle">Qual dispostivo você costuma usar para jogar?</span>
-
-                <select id="select_device">
-                    <option>Console</option>
-                    <option>Computador</option>
-                    <option>Gameboards</option>
-                    <option>Dispositivos Móveis</option>
-                </select>
-            </label>
-
-            <label>
-                <span class="subtittle">Nos conte quantos jogos você já jogou:</span>
-                <input id="ipt_qtdJogos" type="number" class="iptSign">
-            </label>
-
-            
-
-            <div class="sign">
-                <button onclick="cadastrar()">TUDO PRONTO!</button>
-            </div>
-        </div>
+      <div class="mini_section">
+        <label>
+          <span class="subtittle">Senha:</span>
+          <input type="password" id="iptPssw" class="iptSign">
+        </label>
+        <label>
+          <span class="subtittle">Confirmar senha:</span>
+          <input type="password" id="iptConfirmPssw" class="iptSign">
+        </label>
+      </div>
+      <div id="mensagem_erro"></div>
+      <div class="sign">
+        <button onclick="continuar()">PRÓXIMA ETAPA</button>
+        <span>FAZER <a href="../login.html">LOGIN</a></span>
+      </div>
     </div>
+
+    <div id="form_section"> <!-- vai ser escondida inicialmente -->
+      <span class="tittle">Quase lá...</span>
+
+      <label>
+        <span class="subtittle">Selecione seu gênero de jogos favorito:</span>
+
+        <select id="select_gen">
+          <option>Ação</option>
+          <option>Aventura</option>
+          <option>RPG</option>
+          <option>Battle Royale</option>
+          <option>Simulação</option>
+          <option>Indie</option>
+          <option>MOBA</option>
+          <option>Estratégia</option>
+          <option>Esporte</option>
+          <option>Plataforma</option>
+          <option>Horror</option>
+        </select>
+      </label>
+
+      <label>
+        <span class="subtittle">Qual dispostivo você costuma usar para jogar?</span>
+
+        <select id="select_device">
+          <option>Console</option>
+          <option>Computador</option>
+          <option>Gameboards</option>
+          <option>Dispositivos Móveis</option>
+        </select>
+      </label>
+
+      <label>
+        <span class="subtittle">Nos conte quantos jogos você já jogou:</span>
+        <input id="ipt_qtdJogos" type="number" class="iptSign">
+      </label>
+
+      <div id="mensagem_erro"></div>
+
+      <div class="sign">
+        <button onclick="cadastrar()">TUDO PRONTO!</button>
+      </div>
+    </div>
+  </div>
 </body>
 <footer>
 
@@ -108,184 +108,182 @@
 
 <script>
 
-    function continuar() {
-      var nome = iptNome.value;
-      var username = iptUserName.value;
-      var email = iptEmail.value;
-      var dtNasc = iptDtNasc.value;
-      var senha = iptPssw.value;
-      var confirmaSenha = iptConfirmPssw.value;
-      
-      var generoFav = select_gen.value;
-      var deviceFav = select_device.value;
-      var qtdJogos = Number(ipt_qtdJogos.value)
-      
-      var mensagem_erro = ``;
-      
-      var emailHasArroba = email.includes('@');
-      var emailHasPonto = email.includes('.');
-      
-      var listaCharEspecial = ['@', '!', '#', '$'];
-      var listaNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-      var senhaHasEspecial = false;
-      var senhaHasNumber = false;
-      
-      for (let index = 0; index < listaCharEspecial.length; index++) {
-        const element = listaCharEspecial[index];
-        if(senha.includes(element)){
-          senhaHasEspecial = true;
-        }
-      }   
-      for (let index = 0; index < listaNumbers.length; index++) {
-        const element = listaNumbers[index];
-        if(senha.includes(element)){
-          senhaHasNumber = true;
-        }
-      }
-      
-      if (nome.length > 60 || username.length > 15){
-        mensagem_erro = `O número de caracteres do nome ou do username ultrapassa o permitido!`;
-        document.getElementById('mensagem_erro').innerHTML = mensagem_erro;
-        return false;
-      }
-      
-      if (emailHasArroba == false || emailHasPonto == false) {
-        mensagem_erro = 'Insira um endereço de email válido!';
-        document.getElementById('mensagem_erro').innerHTML = mensagem_erro;
-        return false;
-      }
-      if (senha.length < 6 || senhaHasEspecial|| senhaHasNumber){
-        mensagem_erro = 'A senha deve conter 6 caracteres, ao menos 1 caractere especial e 1 número';
-        document.getElementById('mensagem_erro').innerHTML = mensagem_erro;
-        return false;
-      }
-      
-      // Verificando se há algum campo em branco
-      if (
-        nome == "" ||
-        email == "" ||
-        senha == "" ||
-        confirmaSenha == "" ||
-        username == "" ||
-        dtNasc == "" ||
-        qtdJogos == ""
-      ) {
-        mensagem_erro = "Preencha todos os campos";
-        document.getElementById('mensagem_erro').innerHTML = mensagem_erro;
-        return false;}
+  function continuar() {
+    var nome = iptNome.value;
+    var username = iptUserName.value;
+    var email = iptEmail.value;
+    var dtNasc = iptDtNasc.value;
+    var senha = iptPssw.value;
+    var confirmaSenha = iptConfirmPssw.value;
 
-      document.getElementById('signup_section').style.display = 'none';
-      document.getElementById('form_section').style.display = 'flex'
+    var generoFav = select_gen.value;
+    var deviceFav = select_device.value;
+    var qtdJogos = Number(ipt_qtdJogos.value)
+
+    var mensagem_erro = ``;
+
+    var emailHasArroba = email.includes('@');
+    var emailHasPonto = email.includes('.');
+
+    var listaCharEspecial = ['@', '!', '#', '$'];
+    var listaNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+
+    var senhaHasEspecial = false;
+    var senhaHasNumber = false;
+
+    for (let i = 0; i < senha.length; i++) {
+      var char = senha[i];
+      if (listaCharEspecial.includes(char)) {
+        senhaHasEspecial = true;
+      }
+      if (listaNumbers.includes(Number(char))) {
+        senhaHasNumber = true;
+      }
     }
-    
-    function cadastrar() {
-      
-      var nome = iptNome.value;
-      var username = iptUserName.value;
-      var email = iptEmail.value;
-      var dtNasc = iptDtNasc.value;
-      var senha = iptPssw.value;
-      var confirmaSenha = iptConfirmPssw.value;
 
-      var generoFav = select_gen.value;
-      var deviceFav = select_device.value;
-      var qtdJogos = Number(ipt_qtdJogos.value)
-      
-      var mensagem_erro = ``;
-      
-      var emailHasArroba = email.includes('@');
-      var emailHasPonto = email.includes('.');
-      
-      var listaCharEspecial = ['@', '!', '#', '$'];
-      var listaNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-      var senhaHasEspecial = false;
-      var senhaHasNumber = false;
-
-      for (let index = 0; index < listaCharEspecial.length; index++) {
-        const element = listaCharEspecial[index];
-        if(senha[index].includes(element)){
-          senhaHasEspecial = true;
-        }
-      }   
-      for (let index = 0; index < listaNumbers.length; index++) {
-        const element = listaNumbers[index];
-        if(senha[index].includes(element)){
-          senhaHasNumber = true;
-        }
-      }
-      
-      if (nome.length > 60 || username.length > 15){
-        mensagem_erro = `O número de caracteres do nome ou do username ultrapassa o permitido!`;
-        return false;
-      }
-
-      if (emailHasArroba == false || emailHasPonto == false) {
-        mensagem_erro = 'Insira um endereço de email válido!';
-        return false;
-      }
-      if (senha.length < 6 || senhaHasEspecial|| senhaHasNumber){
-        mensagem_erro = 'A senha deve conter 6 caracteres, ao menos 1 caractere especial e 1 número';
-        return false;
-      }
-
-    // Verificando se há algum campo em branco
-      if (
-        nome == "" ||
-        email == "" ||
-        senha == "" ||
-        confirmaSenha == "" ||
-        username == "" ||
-        dtNasc == "" ||
-        qtdJogos == ""
-      ) {
-        //cardErro.style.display = "block";
-        mensagem_erro = "Preencha todos os campos";
-  
-
-        return false;
-      } 
-      // Enviando o valor da nova input
-      fetch("/usuarios/cadastrar", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          // crie um atributo que recebe o valor recuperado aqui
-          // Agora vá para o arquivo routes/usuario.js
-          nomeServer: nome,
-          usernameServer: username,
-          emailServer: email,
-          senhaServer: senha,
-          dtNascServer: dtNasc,
-          genServer: generoFav,
-          deviceServer: deviceFav,
-          qtdJogosServer: qtdJogos
-        }),
-      })
-        .then(function (resposta) {
-          console.log("resposta: ", resposta);
-  
-          if (resposta.ok) {
-            //cardErro.style.display = "block";
-  
-            mensagem_erro.innerHTML =
-              "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-  
-            setTimeout(() => {
-              window.location = "login.html";
-            }, "2000");
-  
-
-          } else {
-            throw "Houve um erro ao tentar realizar o cadastro!";
-          }
-        })
-        .catch(function (resposta) {
-          console.log(`#ERRO: ${resposta}`);
-          
-        });
-  
+    if (nome.length > 60 || username.length > 15) {
+      mensagem_erro = `O número de caracteres do nome ou do username ultrapassa o permitido!`;
+      document.getElementById('mensagem_erro').innerHTML = mensagem_erro;
       return false;
     }
-  </script>
+
+    if (emailHasArroba == false || emailHasPonto == false) {
+      mensagem_erro = 'Insira um endereço de email válido!';
+      document.getElementById('mensagem_erro').innerHTML = mensagem_erro;
+      return false;
+    }
+    if (senha.length < 6 || !senhaHasEspecial || !senhaHasNumber) {
+      mensagem_erro = 'A senha deve conter 6 caracteres, ao menos 1 caractere especial e 1 número';
+      document.getElementById('mensagem_erro').innerHTML = mensagem_erro;
+      return false;
+    }
+
+    // Verificando se há algum campo em branco
+    if (
+      nome == "" ||
+      email == "" ||
+      senha == "" ||
+      confirmaSenha == "" ||
+      username == "" ||
+      dtNasc == ""
+    ) {
+      mensagem_erro = "Preencha todos os campos";
+      document.getElementById('mensagem_erro').innerHTML = mensagem_erro;
+      return false;
+    }
+
+    document.getElementById('signup_section').style.display = 'none';
+    document.getElementById('form_section').style.display = 'flex'
+  }
+
+  function cadastrar() {
+
+    var nome = iptNome.value;
+    var username = iptUserName.value;
+    var email = iptEmail.value;
+    var dtNasc = iptDtNasc.value;
+    var senha = iptPssw.value;
+    var confirmaSenha = iptConfirmPssw.value;
+
+    var generoFav = select_gen.value;
+    var deviceFav = select_device.value;
+    var qtdJogos = Number(ipt_qtdJogos.value)
+
+    // var mensagem_erro = ``;
+
+    // var emailHasArroba = email.includes('@');
+    // var emailHasPonto = email.includes('.');
+
+    // var listaCharEspecial = ['@', '!', '#', '$'];
+    // var listaNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+    // var senhaHasEspecial = false;
+    // var senhaHasNumber = false;
+
+    // for (let index = 0; index < listaCharEspecial.length; index++) {
+    //   const element = listaCharEspecial[index];
+    //   if(senha[index].includes(element)){
+    //     senhaHasEspecial = true;
+    //   }
+    // }   
+    // for (let index = 0; index < listaNumbers.length; index++) {
+    //   const element = listaNumbers[index];
+    //   if(senha[index].includes(element)){
+    //     senhaHasNumber = true;
+    //   }
+    // }
+
+    // if (nome.length > 60 || username.length > 15){
+    //   mensagem_erro = `O número de caracteres do nome ou do username ultrapassa o permitido!`;
+    //   return false;
+    // }
+
+    // if (emailHasArroba == false || emailHasPonto == false) {
+    //   mensagem_erro = 'Insira um endereço de email válido!';
+    //   return false;
+    // }
+    // if (senha.length < 6 || senhaHasEspecial|| senhaHasNumber){
+    //   mensagem_erro = 'A senha deve conter 6 caracteres, ao menos 1 caractere especial e 1 número';
+    //   return false;
+    // }
+
+    // Verificando se há algum campo em branco
+    if (
+      nome == "" ||
+      email == "" ||
+      senha == "" ||
+      confirmaSenha == "" ||
+      username == "" ||
+      dtNasc == "" ||
+      qtdJogos == ""
+    ) {
+      //cardErro.style.display = "block";
+      mensagem_erro = "Preencha todos os campos";
+
+
+      return false;
+    }
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nome,
+        usernameServer: username,
+        emailServer: email,
+        senhaServer: senha,
+        dtNascServer: dtNasc,
+        genServer: generoFav,
+        deviceServer: deviceFav,
+        qtdJogosServer: qtdJogos
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          //cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+
+      });
+
+    return false;
+  }
+</script>
