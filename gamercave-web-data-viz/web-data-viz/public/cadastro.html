@@ -147,11 +147,6 @@
       return false;
     }
 
-    if (senha != confirmaSenha){
-      mensagem_erro = 'As senhas devem ser iguais!'
-      document.getElementById('mensagem_erro').innerHTML = mensagem_erro;
-      return false;
-    }
 
     if (emailHasArroba == false || emailHasPonto == false) {
       mensagem_erro = 'Insira um endereço de email válido!';

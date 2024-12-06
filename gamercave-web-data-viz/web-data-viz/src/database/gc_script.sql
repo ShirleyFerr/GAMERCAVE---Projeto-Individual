@@ -1,4 +1,4 @@
-create database gamer_cave;
+ create database gamer_cave;
 use gamer_cave;
 
 create table usuario (
