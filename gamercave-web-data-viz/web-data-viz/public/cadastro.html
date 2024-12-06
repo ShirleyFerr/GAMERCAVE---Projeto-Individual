@@ -48,6 +48,7 @@
                     <input type="password" id="iptConfirmPssw" class="iptSign">
                 </label>
             </div>
+            <div id="mensagem_erro"></div>
             <div class="sign">
                 <button onclick="continuar()">PRÓXIMA ETAPA</button>
                 <span>FAZER <a href="../login.html">LOGIN</a></span>
@@ -91,7 +92,7 @@
                 <input id="ipt_qtdJogos" type="number" class="iptSign">
             </label>
 
-            <div id="mensagem_erro"></div>
+            
 
             <div class="sign">
                 <button onclick="cadastrar()">TUDO PRONTO!</button>
@@ -108,33 +109,57 @@
 <script>
 
     function continuar() {
-        document.getElementById('signup_section').style.display = 'none';
-        document.getElementById('form_section').style.display = 'flex'
-    }
-
-    // function cadastro() {
-    //     document.getElementById('signup_section').style.display = 'flex'
-    //     document.getElementById('form_section').style.display = 'none';
-    // }
-
-  
-    function cadastrar() {
-      // aguardar();
-  
-      //Recupere o valor da nova input pelo nome do id
-      // Agora vá para o método fetch logo abaixo
       var nome = iptNome.value;
       var username = iptUserName.value;
       var email = iptEmail.value;
       var dtNasc = iptDtNasc.value;
       var senha = iptPssw.value;
       var confirmaSenha = iptConfirmPssw.value;
-
+      
       var generoFav = select_gen.value;
       var deviceFav = select_device.value;
       var qtdJogos = Number(ipt_qtdJogos.value)
-
-  
+      
+      var mensagem_erro = ``;
+      
+      var emailHasArroba = email.includes('@');
+      var emailHasPonto = email.includes('.');
+      
+      var listaCharEspecial = ['@', '!', '#', '$'];
+      var listaNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+      var senhaHasEspecial = false;
+      var senhaHasNumber = false;
+      
+      for (let index = 0; index < listaCharEspecial.length; index++) {
+        const element = listaCharEspecial[index];
+        if(senha.includes(element)){
+          senhaHasEspecial = true;
+        }
+      }   
+      for (let index = 0; index < listaNumbers.length; index++) {
+        const element = listaNumbers[index];
+        if(senha.includes(element)){
+          senhaHasNumber = true;
+        }
+      }
+      
+      if (nome.length > 60 || username.length > 15){
+        mensagem_erro = `O número de caracteres do nome ou do username ultrapassa o permitido!`;
+        document.getElementById('mensagem_erro').innerHTML = mensagem_erro;
+        return false;
+      }
+      
+      if (emailHasArroba == false || emailHasPonto == false) {
+        mensagem_erro = 'Insira um endereço de email válido!';
+        document.getElementById('mensagem_erro').innerHTML = mensagem_erro;
+        return false;
+      }
+      if (senha.length < 6 || senhaHasEspecial|| senhaHasNumber){
+        mensagem_erro = 'A senha deve conter 6 caracteres, ao menos 1 caractere especial e 1 número';
+        document.getElementById('mensagem_erro').innerHTML = mensagem_erro;
+        return false;
+      }
+      
       // Verificando se há algum campo em branco
       if (
         nome == "" ||
@@ -145,8 +170,76 @@
         dtNasc == "" ||
         qtdJogos == ""
       ) {
+        mensagem_erro = "Preencha todos os campos";
+        document.getElementById('mensagem_erro').innerHTML = mensagem_erro;
+        return false;}
+
+      document.getElementById('signup_section').style.display = 'none';
+      document.getElementById('form_section').style.display = 'flex'
+    }
+    
+    function cadastrar() {
+      
+      var nome = iptNome.value;
+      var username = iptUserName.value;
+      var email = iptEmail.value;
+      var dtNasc = iptDtNasc.value;
+      var senha = iptPssw.value;
+      var confirmaSenha = iptConfirmPssw.value;
+
+      var generoFav = select_gen.value;
+      var deviceFav = select_device.value;
+      var qtdJogos = Number(ipt_qtdJogos.value)
+      
+      var mensagem_erro = ``;
+      
+      var emailHasArroba = email.includes('@');
+      var emailHasPonto = email.includes('.');
+      
+      var listaCharEspecial = ['@', '!', '#', '$'];
+      var listaNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+      var senhaHasEspecial = false;
+      var senhaHasNumber = false;
+
+      for (let index = 0; index < listaCharEspecial.length; index++) {
+        const element = listaCharEspecial[index];
+        if(senha[index].includes(element)){
+          senhaHasEspecial = true;
+        }
+      }   
+      for (let index = 0; index < listaNumbers.length; index++) {
+        const element = listaNumbers[index];
+        if(senha[index].includes(element)){
+          senhaHasNumber = true;
+        }
+      }
+      
+      if (nome.length > 60 || username.length > 15){
+        mensagem_erro = `O número de caracteres do nome ou do username ultrapassa o permitido!`;
+        return false;
+      }
+
+      if (emailHasArroba == false || emailHasPonto == false) {
+        mensagem_erro = 'Insira um endereço de email válido!';
+        return false;
+      }
+      if (senha.length < 6 || senhaHasEspecial|| senhaHasNumber){
+        mensagem_erro = 'A senha deve conter 6 caracteres, ao menos 1 caractere especial e 1 número';
+        return false;
+      }
+
+    // Verificando se há algum campo em branco
+      if (
+        nome == "" ||
+        email == "" ||
+        senha == "" ||
+        confirmaSenha == "" ||
+        username == "" ||
+        dtNasc == "" ||
+        qtdJogos == ""
+      ) {
         //cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+        mensagem_erro = "Preencha todos os campos";
   
 
         return false;
