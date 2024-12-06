@@ -5,7 +5,8 @@ function listarPublis(){
     `
     select p.idPubli, p.conteudo as contentPubli, 
     u.nome as userPubli, u.username as usernamePubli, 
-    DATE_FORMAT(p.dtPubli, '%d/%m/%Y às %H:%i:%s') as DtPublicacao 
+    DATE_FORMAT(p.dtPubli, '%d/%m/%Y às %H:%i:%s') as DtPublicacao,
+    u.idUser as idUser 
     from publicacao as p 
     JOIN usuario as u 
     where p.fkUser = u.idUser 

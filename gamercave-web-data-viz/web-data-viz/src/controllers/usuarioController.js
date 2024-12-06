@@ -78,7 +78,7 @@ function cadastrar(req, res) {
     } else if (genFav == undefined){
         res.status(400).send("Genero favorito está undefined!");
     } else if (devFav == undefined){
-        res.status(400).send(" está undefined!");
+        res.status(400).send("Dispositivo está undefined!");
     }
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
@@ -100,7 +100,35 @@ function cadastrar(req, res) {
     }
 
 
+function atualizarBio(req,res) {
+    var contentBio = req.body.contentBioServer;
+    var idUsuario = req.body.idUser;
+    
+    if (contentBio == undefined) {
+        res.status(400).send("Biografia está undefined!");
+    } else if (idUsuario == undefined) {
+        res.status(400).send("Id do usuario está undefined!");
+    }
+
+    usuarioModel.atualizarBio(contentBio, idUsuario)
+    .then(
+        function(resultado){
+            res.json(resultado);
+        }
+    ).catch(
+        function(erro){
+            console.log(erro);
+            console.log("\nHouve um erro ao atualizar a biografia! Erro: ",
+                erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage);
+        }
+    )
+
+
+}
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    atualizarBio
 }

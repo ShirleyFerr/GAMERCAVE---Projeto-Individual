@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="./css/style_main.css">
 </head>
 <header>
-    <div>
+    <div onclick="voltarHome()">
         <img src="./assets/gamercave_icon1.png">
         <span class="tittle_icon">GamerCave</span>
     </div>
     
-    <img src="./assets/userIcon.png" alt="perfilUsuario">
+    <img onclick="mostrarPerfil()" src="./assets/userIcon.png" alt="perfilUsuario">
 </header>
 
 <body>
@@ -97,7 +97,7 @@
                         var span_name = document.createElement('span');
                         var span_username = document.createElement('span');
                         var divCurtida = document.createElement('div');
-                        var imgCurtida = document.createElement('img');
+                        // var imgCurtida = document.createElement('img');
                         var conteudoPubli = document.createElement('div'); 
                         var dtHoraPubli = document.createElement('div')
 
@@ -109,7 +109,7 @@
                         cardIdentify.id = 'userIndentify';
                         imgUser.id = 'perfil';
                         divUserName.id = 'userDiv'; 
-                        imgCurtida.id = 'curtida';
+                        // imgCurtida.id = 'curtida';
                         conteudoPubli.id = 'caixaTexto';
 
                         cardPubli.classList.add('publicacao');
@@ -119,7 +119,7 @@
                         conteudoPubli.classList.add('caixa-texto');
                         dtHoraPubli.classList.add('dtHora-publi');
                         
-                        imgCurtida.src = './assets/curtida-vazia.png'
+                        // imgCurtida.src = './assets/curtida-vazia.png'
                         imgUser.src = './assets/userIcon.png'
 
                         cardPubli.appendChild(cardHeader);
@@ -129,7 +129,7 @@
                         divUserName.appendChild(span_name);
                         divUserName.appendChild(span_username);
                         cardHeader.appendChild(divCurtida);
-                        divCurtida.appendChild(imgCurtida);
+                        // divCurtida.appendChild(imgCurtida);
                         cardPubli.appendChild(conteudoPubli);
                         cardPubli.appendChild(dtHoraPubli);
 

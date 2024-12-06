@@ -11,12 +11,12 @@
     <script src="./js/main.js"></script>
 </head>
 <header>
-    <div>
+    <div onclick="voltarHome()">
         <img src="./assets/gamercave_icon1.png">
         <span class="tittle_icon">GamerCave</span>
     </div>
 
-    <img src="./assets/userIcon.png" alt="perfilUsuario">
+    <img onclick="mostrarPerfil()" onclick="mostrarPerfil()" src="./assets/userIcon.png" alt="perfilUsuario">
 </header>
 
 <body>
@@ -50,8 +50,9 @@
             <div class="chart">
                 <canvas id="chartDispositivo"></canvas>
             </div>
-            <div class="chart">
-                <canvas id="chartMedia"></canvas>
+            <div id="kpiMedia">
+                <span>Média de jogos dos membros do GamerCave</span>
+                <span id="media"></span>
             </div>
         </div>
     </div>
@@ -62,67 +63,112 @@
     // Inicializar gráficos vazios com placeholders
     const ctx1 = document.getElementById('chartGenero');
     const ctx2 = document.getElementById('chartDispositivo');
-    const ctx3 = document.getElementById('chartMedia');
 
     // Gráfico de Gêneros Favoritos
     const chartGenero = new Chart(ctx1, {
         type: 'pie',
         data: {
-            labels: [], // Inicial vazio
+            labels: [],
             datasets: [{
-                data: [], // Inicial vazio
-                backgroundColor: ['#5f253a',
-                    '#db739b',
-                    '#fcf7aa',
-                    '#0fd981',
-                    '#ba74a9',
-                    '#340a31',
-                    '#22e5c9',
-                    '#a80888',
-                    '#33323d',
-                    '#c05b8f',
-                    '#92d312']
+                data: [],
+                backgroundColor: [
+                    '#DB00B9',
+                    '#B8A5E6',
+                    '#C135DB',
+                    '#DC3F35',
+                    '#5300DB',
+                    '#79E0B9',
+                    '#0047A3',
+                    '#DB75D1',
+                    '#4186B7',
+                    '#A9E3FF',
+                    '#575DDC'],
+                borderWidth: 1,
+
+
             }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Gráfico de Gêneros Favoritos',
+                    font: {
+                        size: 18,
+                        weight: '500',
+                        family: 'system-ui'
+                    },
+
+                    color: 'white',
+                    padding: { top: 10, bottom: 10 }
+                },
+                legend: {
+                    position: 'top',
+                    labels: {
+                        font: {
+                            size: 14,
+                            family: 'system-ui'
+                        },
+                        color: 'white',
+                        padding: 20,
+                        boxWidth: 15
+                    }
+                }
+            }
         }
-    });
+        });
 
     // Gráfico de Dispositivos Favoritos
     const chartDispositivo = new Chart(ctx2, {
         type: 'pie',
         data: {
-            labels: [], // Inicial vazio
+            labels: [],
             datasets: [{
-                data: [], // Inicial vazio
-                backgroundColor: ['#4BC0C0', '#FF9F40', '#9966FF', '#F9e6aa']
-            }]
-        }
-    });
-
-    // Gráfico de Média de Jogos por Usuário
-    const chartMedia = new Chart(ctx3, {
-        type: 'bar',
-        data: {
-            labels: ["Média de Jogos por Jogador"], // Label fixa
-            datasets: [{
-                data: [0], // Inicial vazio
-                backgroundColor: ['#FF6384']
+                data: [],
+                backgroundColor: [
+                    '#00DBBF',
+                    '#8000DB',
+                    '#6E75DB',
+                    '#BD00DB'],
+                borderWidth: 1,
             }]
         },
         options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Gráfico de Dispositivos Favoritos',
+                    font: {
+                        size: 18,
+                        weight: '500',
+                        family: 'system-ui'
+                    },
+
+                    color: 'white',
+                    padding: { top: 10, bottom: 10 }
+                },
+                legend: {
+                    position: 'top',
+                    labels: {
+                        font: {
+                            size: 14,
+                            family: 'system-ui'
+                        },
+                        color: 'white',
+                        padding: 20,
+                        boxWidth: 15
+                    }
                 }
             }
         }
     });
 
-    // Função para obter dados do backend
+
     function obterDadosJogos() {
         return fetch('/dash/listar')
             .then(function (response) {
                 if (response.ok) {
-                    return response.json(); // Retorna vetor
+                    return response.json();
                 } else {
                     console.error('Erro ao buscar dados: ', response.statusText);
                     return null;
@@ -138,7 +184,7 @@
             .then(function (dados) {
                 if (dados) {
                     // chart genero de jogos
-                    var generoFav = dados[0]; // Posição 0 no vetor
+                    var generoFav = dados[0];
                     var labelsGenero = generoFav.map(d => d.generoFav);
                     var valoresGenero = generoFav.map(d => d.quantidadePessoas);
 
@@ -147,7 +193,7 @@
                     chartGenero.update();
 
                     // chart dispositivos
-                    var dispositivoFav = dados[1]; // Posição 1 no vetor
+                    var dispositivoFav = dados[1];
                     var labelsDispositivo = dispositivoFav.map(d => d.dispositivoFav);
                     var valoresDispositivo = dispositivoFav.map(d => d.quantidadePessoas);
 
@@ -155,11 +201,12 @@
                     chartDispositivo.data.datasets[0].data = valoresDispositivo;
                     chartDispositivo.update();
 
-                    // chart media
-                    var mediaJogos = dados[2]; // Posição 2 no vetor
-                    var valorMedia = mediaJogos[0]?.mediaJogosPorJogador || 0; // Adicionar verificação de segurança
-                    chartMedia.data.datasets[0].data = [valorMedia];
-                    chartMedia.update();
+
+                    var mediaJogos = dados[2];
+                    var spanMedia = document.getElementById('media');
+                    var valorMedia = Math.round(mediaJogos[0]?.mediaJogosPorJogador || 0);
+                    spanMedia.innerHTML = valorMedia;
+
 
                 }
             });

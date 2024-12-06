@@ -15,6 +15,10 @@ function mostrarPerfil(){
     window.location.href = '../perfil.html';
 }
 
+function voltarHome(){
+    window.location.href = '../homepage.html';
+}
+
 
 // criar bloco para nova publicacao enviar e desaparecer depois
 var containerNewPubli;

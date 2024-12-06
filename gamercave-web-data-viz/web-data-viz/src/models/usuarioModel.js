@@ -51,8 +51,17 @@ function cadastrar(nome, email, username, dtNasc, senha, genFav, devFav, qtdJogo
         });
 }
 
+function atualizarBio(contentBio, idUsuario){
+    var instrucaoSql = `
+        UPDATE usuario set biografia = '${contentBio}' where idUser = ${idUsuario}
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
     cadastrar,
-    buscarPerfilUsuario
+    buscarPerfilUsuario,
+    atualizarBio
 };

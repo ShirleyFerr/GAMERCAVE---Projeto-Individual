@@ -1,97 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GamerCave | perfil</title>
-    <link rel="icon" href="./assets/favicon.png" type="image/png" />
-    <link rel="stylesheet" href="./css/style_main.css" />
-    <script src="./js/main.js"></script>
-  </head>
-  <header>
-    <div>
-      <img src="./assets/gamercave_icon1.png" />
-      <span class="tittle_icon">GamerCave</span>
-    </div>
 
-    <img src="./assets/userIcon.png" alt="perfilUsuario" />
-  </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GamerCave | perfil</title>
+  <link rel="icon" href="./assets/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="./css/style_main.css" />
+  <script src="./js/main.js"></script>
+</head>
+<header>
+  <div onclick="voltarHome()">
+    <img src="./assets/gamercave_icon1.png" />
+    <span class="tittle_icon">GamerCave</span>
+  </div>
 
-  <body>
-    <div class="sidebar">
-      <div class="click" onclick="mostrarTimeline()">
-        <img src="./assets/homeIcon.png" alt="" />
-        <span>HOME</span>
-      </div>
-      <div class="click" onclick="novaPublicacao()">
-        <img src="./assets/icon-new-publi.png" alt="" />
-        <span>Publicar</span>
-      </div>
-      <div class="click" onclick="mostrarDiscover()">
-        <img src="./assets/discoverIcon.png" alt="" />
-        <span>DISCOVER</span>
-      </div>
-      <div class="click" onclick="mostrarDash()">
-        <img src="./assets/icon-dash.png" alt="" />
-        <span>Estatísticas</span>
-      </div>
-      <div class="click" onclick="mostrarPerfil()">
-        <img src="./assets/userIcon.png" alt="" />
-        <span>PERFIL</span>
-      </div>
-    </div>
+  <img onclick="mostrarPerfil()" src="./assets/userIcon.png" alt="perfilUsuario" />
+</header>
 
-    <div onload="carregarPerfil()" class="profile">
-      <div id="profileIndentify">
-        <img src="./assets/userIcon.png" alt="" />
-        <div id="username">
-          <span id="nomeUsuario"></span>
-          <span id="user_name"></span>
-        </div>
-      </div>
-      <div id="biouser">
-        <span id="biografia">
-          lorem impsun hsahdihwg shaudgiquw asgduiqwg
-        </span>
-      </div>
-      <button onclick="mudarBio()" id="button_bio">Mudar Biografia</button>
-      <hr />
-      <!-- postagens do usuario -->
+<body>
+  <div class="sidebar">
+    <div class="click" onclick="mostrarTimeline()">
+      <img src="./assets/homeIcon.png" alt="" />
+      <span>HOME</span>
     </div>
-    <div>
-      <!-- <div class="publicacao">
-            <div class="cabecalho-publicacao">
-                <div id="userIndentify">
-                    
-                        <img id="perfil" src="./assets/userIcon.png" alt="">
-                    
-                    <div id="userDiv">
-                        <span>Nome_Usuário</span>
-                        <span>@username</span>
-                    </div>
-                </div>
-                <div>
-                    <img id="curtida" src="./assets/curtida-vazia.png" alt="">
-                </div>
-            </div>
-            <div id="caixaTexto">lorem ipsum etc etc etc</div>
-        </div> -->
+    <div class="click" onclick="novaPublicacao()">
+      <img src="./assets/icon-new-publi.png" alt="" />
+      <span>Publicar</span>
     </div>
-  </body>
+    <div class="click" onclick="mostrarDiscover()">
+      <img src="./assets/discoverIcon.png" alt="" />
+      <span>DISCOVER</span>
+    </div>
+    <div class="click" onclick="mostrarDash()">
+      <img src="./assets/icon-dash.png" alt="" />
+      <span>Estatísticas</span>
+    </div>
+    <div class="click" onclick="mostrarPerfil()">
+      <img src="./assets/userIcon.png" alt="" />
+      <span>PERFIL</span>
+    </div>
+  </div>
+
+  <div onload="carregarPerfil()" class="profile">
+    <div id="profileIndentify">
+      <img src="./assets/userIcon.png" alt="" />
+      <div id="username">
+        <span id="nomeUsuario"></span>
+        <span id="user_name"></span>
+      </div>
+    </div>
+    <div id="biouser">
+      <span id="biografia">
+
+      </span>
+    </div>
+    <button onclick="mudarBio()" id="button_bio">Mudar Biografia</button>
+    <hr />
+    <!-- postagens do usuario -->
+  </div>
+  <div class="timeline" id="feedUser">
+  </div>
+</body>
+
 </html>
 <script>
   nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO;
   user_name.innerHTML = "@" + sessionStorage.USERNAME;
   biografia.innerHTML = sessionStorage.USER_BIO;
+  idUsuario = Number(sessionStorage.ID_USUARIO);
 
-  function carregarPerfil() {}
+
 
   function mudarBio() {
-    document.getElementById("biografia").style.display = "none";
-    var inputBio = document.createElement("input");
-    inputBio.type = 'text';
-    inputBio.id = "input_bio";
-    var bio = document.getElementById('biouser');
-    document.bio.appendChild('input_bio');
+    containerNewPubli = document.createElement('div');
+    containerNewPubli.classList.add('new-publi');
+
+    var boxNewPubli = document.createElement('div');
+    boxNewPubli.classList.add('new-publi-box');
+    containerNewPubli.appendChild(boxNewPubli);
+
+    var textAreaPubli = document.createElement('textarea');
+    textAreaPubli.id = 'iptBiografia';
+    textAreaPubli.placeholder = 'Escreva sua biografia aqui...';
+    boxNewPubli.appendChild(textAreaPubli);
+
+
+    var btnPublicar = document.createElement('button');
+    btnPublicar.innerText = 'atualizar';
+    btnPublicar.onclick = atualizarBio ;
+    boxNewPubli.appendChild(btnPublicar);
+
+    var btnCancelar = document.createElement('button');
+    btnCancelar.innerText = 'Cancelar';
+    btnCancelar.onclick = cancelar;
+    boxNewPubli.appendChild(btnCancelar);
+
+    document.body.appendChild(containerNewPubli);
+    console.log('tela para nova publicação apareceu com sucesso!')
+  }
+
+  function atualizarBio() {
+    var idUser = sessionStorage.ID_USUARIO;
+    var contentBio = document.getElementById('iptBiografia').value;
+
+    if (contentBio == ''){
+        console.error('nenhum conteúdo na biografia');
+        return false
+    } 
+    fetch('/usuarios/atualizarBio', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contentBioServer: contentBio, 
+            idUser: idUser,
+        }),
+    })
+    .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+            console.log('Atualização realizada com sucesso');
+            biografia.innerHTML = contentBio;
+        } else {
+          
+            throw "Houve um erro ao tentar atualizar a biografia!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        
+        return false;
+      });
+
+    containerNewPubli.remove();
+    console.log('tela de atualizar biografia foi excluida!')
+  }
+
+  function cancelar() {
+    containerNewPubli.remove();
+  }
+
+  function listarPublis() {
+    fetch("/publicacao/listarPublis").then(function (resposta) {
+      if (resposta.ok) {
+        if (resposta.status == 204) {
+          var feed = document.getElementById("feedUser");
+          throw "Nenhum resultado encontrado!!";
+        }
+
+        resposta.json().then(function (resposta) {
+
+          console.log("Dados recebidos: ", JSON.stringify(resposta));
+          var feed = document.getElementById("feedUser");
+          resposta.reverse();
+          feed.innerHTML = "";
+
+          for (let i = 0; i < resposta.length; i++) {
+            var publicacao = resposta[i];
+
+            if (publicacao.idUser === idUsuario) {
+
+              var userPubli = publicacao.userPubli;
+              var usernamePubli = publicacao.usernamePubli;
+              var contentPubli = publicacao.contentPubli;
+
+              var cardPubli = document.createElement('div');
+              var cardHeader = document.createElement('div');
+              var cardIdentify = document.createElement('div');
+              var imgUser = document.createElement('img')
+              var divUserName = document.createElement('div');
+              var span_name = document.createElement('span');
+              var span_username = document.createElement('span');
+              var divCurtida = document.createElement('div');
+              // var imgCurtida = document.createElement('img');
+              var conteudoPubli = document.createElement('div');
+              var dtHoraPubli = document.createElement('div')
+
+              span_name.innerHTML = userPubli;
+              span_username.innerHTML = `@${usernamePubli}`;
+              conteudoPubli.innerHTML = publicacao.contentPubli;
+              dtHoraPubli.innerHTML = `Publicado em ${publicacao.DtPublicacao}`;
+
+              cardIdentify.id = 'userIndentify';
+              imgUser.id = 'perfil';
+              divUserName.id = 'userDiv';
+              // imgCurtida.id = 'curtida';
+              conteudoPubli.id = 'caixaTexto';
+
+              cardPubli.classList.add('publicacao');
+              cardHeader.classList.add('cabecalho-publicacao');
+              cardIdentify.classList.add('userIndentify');
+              divUserName.classList.add('userDiv');
+              conteudoPubli.classList.add('caixa-texto');
+              dtHoraPubli.classList.add('dtHora-publi');
+
+              // imgCurtida.src = './assets/curtida-vazia.png'
+              imgUser.src = './assets/userIcon.png'
+
+              cardPubli.appendChild(cardHeader);
+              cardHeader.appendChild(cardIdentify);
+              cardIdentify.appendChild(imgUser);
+              cardIdentify.appendChild(divUserName);
+              divUserName.appendChild(span_name);
+              divUserName.appendChild(span_username);
+              cardHeader.appendChild(divCurtida);
+              // divCurtida.appendChild(imgCurtida);
+              cardPubli.appendChild(conteudoPubli);
+              cardPubli.appendChild(dtHoraPubli);
+
+              feed.appendChild(cardPubli);
+            }
+          }
+        });
+      } else {
+        throw ('Houve um erro na API!');
+      }
+    }).catch(function (resposta) {
+      console.error(resposta);
+    });
+  }
+
+  window.onload = function () {
+    listarPublis();
   }
 </script>
